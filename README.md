@@ -1,4 +1,4 @@
-# ERC721
+# ERC_NFT
 This is an erc721 project that allows users to mint nfts and also to send badges
 
 WHAT THIS PROJECT IS ALL ABOUT
@@ -11,6 +11,6 @@ There is a gif preview of some of the nft to be minted.
 Users can mint at most 2 nft at a time. 
 This project uses POLYGON MUMBAI testnet
 
-B: MINT A BADGE TO SPECIFIED ADDRESSES
---------------------------------------
+B: MINT A BADGE TO SPECIFIED ADDRESSES USING ERC1155
+----------------------------------------------------
 
