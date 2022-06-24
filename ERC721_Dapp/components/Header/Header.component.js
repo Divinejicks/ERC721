@@ -24,7 +24,7 @@ export default function Header(){
                     </ImageContainer>
                     <StyledLinkDiv>
                         <Link href="/" passHref>
-                        <StyledLink onClick={newPathName} pathname={pathName}> Mint a face </StyledLink> 
+                            <StyledLink onClick={newPathName} pathname={pathName}> Mint a face </StyledLink> 
                         </Link>
                         <Link href="/badge" passHref> 
                             <StyledLink  onClick={newPathName} pathname={pathName}> Send Badge  </StyledLink>

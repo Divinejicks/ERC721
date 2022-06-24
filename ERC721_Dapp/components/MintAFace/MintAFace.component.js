@@ -37,7 +37,7 @@ export default function MintAFace() {
         const { chainId } = await web3Provider.getNetwork();
         if(chainId !== 80001){
             window.alert("Change the network to polygon mumbai");
-            throw new Error("Change network to polygon mumbai");
+            //throw new Error("Change network to polygon mumbai");
         }
 
         const addr = await web3Provider.getSigner().getAddress()
