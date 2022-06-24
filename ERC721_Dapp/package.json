@@ -21,6 +21,7 @@
     "web3modal": "^1.9.8"
   },
   "devDependencies": {
+    "@coinbase/wallet-sdk": "^3.3.0",
     "eslint": "8.18.0",
     "eslint-config-next": "12.1.6"
   }

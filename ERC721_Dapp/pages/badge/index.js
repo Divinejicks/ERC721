@@ -10,8 +10,6 @@ export default function Badge() {
                 <p>
                     This is to demonstrate how we can build an ERC721 NFT to send badges to persons who have 
                     gone through your training program or course.
-
-                    Good good good
                 </p>
             </StyledContainer>
             <Footer />

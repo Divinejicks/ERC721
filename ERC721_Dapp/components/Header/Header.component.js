@@ -30,9 +30,6 @@ export default function Header(){
                             <StyledLink  onClick={newPathName} pathname={pathName}> Send Badge  </StyledLink>
                         </Link>
                     </StyledLinkDiv>
-                    <div>
-                        <StyledButton>Connect wallet</StyledButton>
-                    </div>
                 </StyledNav>
                 <StyledContainer>
                     <Flex>

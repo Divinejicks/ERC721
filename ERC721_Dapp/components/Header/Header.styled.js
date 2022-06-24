@@ -36,7 +36,7 @@ export const StyledLink = styled.a`
   text-decoration: none;
   padding: 0 10px;
   padding: 10px;
-  background-color: ${(props) => props.href === props.pathname ? "#99ccff" : ""};
+  background-color: ${(props) => props.href === props.pathname ? "#b3b3ff" : ""};
   color: ${(props) => props.href === props.pathname ? "#fff" : "#000"};
 
   &:hover {
