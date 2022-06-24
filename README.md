@@ -7,5 +7,10 @@ This project has the following use cases
 
 A: MINT AN NFT USING ERC271
 ---------------------------
+There is a gif preview of some of the nft to be minted. 
+Users can mint at most 2 nft at a time. 
+This project uses POLYGON MUMBAI testnet
 
+B: MINT A BADGE TO SPECIFIED ADDRESSES
+--------------------------------------
 
