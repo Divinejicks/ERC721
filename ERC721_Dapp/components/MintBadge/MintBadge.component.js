@@ -11,7 +11,7 @@ export default function MintBadge() {
     const [address, setAddress] = useState("");
     const [hyphenatedAddress, setHyphenatedAddress] = useState("");
     const [badgeTokenId, setBadgeTokenId] = useState(1);
-    const [beneficialAddresses, setBeneficialAddresses] = useState([]);
+    const [beneficialAddresses, setBeneficialAddresses] = useState("");
     
     const web3ModalRef = useRef();
 
@@ -85,13 +85,14 @@ export default function MintBadge() {
 
     const mintBadge = async () => {
         const erc721Badge = await getERC721BadgeSigner();
-        await erc721Badge.mint(beneficialAddresses, badgeTokenId);
+        await erc721Badge.mint(beneficialAddresses.split(','), badgeTokenId);
     }
 
     return(
         <>
             <StyledContainer>
                 <StyledCard color="#ff9999">
+                    <h1>Still in progress.</h1>
                     <h4><strong>Only admins can send a badge. If you want to test this out 
                         send your mumbai address to me through email and i will make you an admin</strong>
                     </h4>
