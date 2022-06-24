@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { StyledButton } from "../common_styles/Button.styled";
-import { StyledCard } from "../common_styles/Card.styled";
+import { StyledCard, StyledCardMini } from "../common_styles/Card.styled";
 import { StyledContainer } from "../common_styles/Container.styled";
 import Web3Modal from 'web3modal';
 import { Contract, providers, utils } from 'ethers';
@@ -96,28 +96,31 @@ export default function MintBadge() {
                     <h4><strong>Only admins can send a badge. If you want to test this out 
                         send your mumbai address to me through email and i will make you an admin</strong>
                     </h4>
-                    <p>{hyphenatedAddress}</p>
+                    <StyledCardMini color="#fff">
+                        <p>{hyphenatedAddress}</p>
 
-                    {!walletConnected && 
-                        <>
-                            <h5>Connect to polygon mumbai network</h5>
-                            <StyledButton bg='#cce6ff' onClick={connectWallet}>Connect</StyledButton>
-                        </>
-                    }
+                        {!walletConnected && 
+                            <>
+                                <h5>Connect to polygon mumbai network</h5>
+                                <StyledButton bg='#cce6ff' onClick={connectWallet}>Connect</StyledButton>
+                            </>
+                        }
 
-                    {walletConnected && 
-                        <>
-                            <div>
-                                <p>Enter the addresses as comma separated string</p>
-                                <input type="text" placeholder="Enter address" onChange={event => setBeneficialAddresses(event.target.value)} />
-                            </div>
-                            <div>
-                                <p>Enter the tokenId</p>
-                                <input type="number" onChange={event => setBadgeTokenId(event.target.value)}/>
-                            </div>
-                            <StyledButton bg="#cce6ff" onClick={mintBadge}>Mint Badge</StyledButton>
-                        </>
-                    }
+                        {walletConnected && 
+                            <>
+                                <div>
+                                    <p>Enter the addresses as comma separated values</p>
+                                    <input type="text" placeholder="e,g ab45,but67e,45thh" onChange={event => setBeneficialAddresses(event.target.value)} />
+                                </div>
+                                <div>
+                                    <p>Enter the tokenId</p>
+                                    <input type="number" onChange={event => setBadgeTokenId(event.target.value)}/>
+                                </div>
+                                
+                                <StyledButton bg="#cce6ff" onClick={mintBadge}>Mint Badge</StyledButton>
+                            </>
+}
+                    </StyledCardMini>
                 </StyledCard>
             </StyledContainer>
         </>
