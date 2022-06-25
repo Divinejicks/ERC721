@@ -3,7 +3,7 @@ const hre = require("hardhat");
 
 const main = async () => {
     const ERC721NFTBadge = await ethers.getContractFactory("ERC721NFTBadge");
-    const erc721NFTBadge = ERC721NFTBadge.deploy("ipfs://QmZYALePkpwo21iCAS936JyDUAwEzgFxx8kchfPh18Ec6L/");
+    const erc721NFTBadge = ERC721NFTBadge.deploy();
     
     (await erc721NFTBadge).deployed();
 
@@ -14,7 +14,7 @@ const main = async () => {
 
     await hre.run("verify:verify", {
         address: (await erc721NFTBadge).address,
-        constructorArguments: ["ipfs://QmZYALePkpwo21iCAS936JyDUAwEzgFxx8kchfPh18Ec6L/"],
+        constructorArguments: [],
     });
 }
 

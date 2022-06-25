@@ -35,3 +35,26 @@ export const StyledCardMini = styled.div`
       width: 110%;
     }
 `;
+
+export const StyledCardMedium = styled.div`
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    border-radius: 5%;
+    background-color: ${({color}) => color};
+    padding: 2px 5px;
+    margin-bottom: 50px;
+    margin-top: 20px;
+    margin-left: 10px;
+    width: 50%;
+
+    input {
+      margin-bottom: 5px;
+    }
+
+    @media(max-width: ${({theme}) => theme.mobile}) {
+      padding: 10px 50px ;
+      margin-bottom: 10px;
+      margin-top: 5px;
+      width: 110%;
+    }
+`;

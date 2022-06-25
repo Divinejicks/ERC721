@@ -1,17 +1,20 @@
 import { useEffect, useRef, useState } from "react";
 import { StyledButton } from "../common_styles/Button.styled";
-import { StyledCard, StyledCardMini } from "../common_styles/Card.styled";
+import { StyledCard, StyledCardMedium, StyledCardMini } from "../common_styles/Card.styled";
 import { StyledContainer } from "../common_styles/Container.styled";
 import Web3Modal from 'web3modal';
 import { Contract, providers, utils } from 'ethers';
 import { ERC721Badge_ABI, ERC721Badge_Address } from "../../constants";
+import { Flex } from "../../components/common_styles/Flex.styled";
 
 export default function MintBadge() {
     const [walletConnected, setWalletConnected] = useState(false);
     const [address, setAddress] = useState("");
     const [hyphenatedAddress, setHyphenatedAddress] = useState("");
-    const [badgeTokenId, setBadgeTokenId] = useState(1);
+    const [badgeTokenId, setBadgeTokenId] = useState(0);
     const [beneficialAddresses, setBeneficialAddresses] = useState("");
+    const [amountToMint, setAmountToMint] = useState(0);
+    const [badgeTokenIdToMint, setBadgeTokenIdToMint] = useState(0);
     
     const web3ModalRef = useRef();
 
@@ -85,42 +88,79 @@ export default function MintBadge() {
 
     const mintBadge = async () => {
         const erc721Badge = await getERC721BadgeSigner();
-        await erc721Badge.mint(beneficialAddresses.split(','), badgeTokenId);
+        const currentPrice = await erc721Badge.price();
+        const price = utils.formatEther(currentPrice);
+        const priceToPay = amountToMint*price;
+        await erc721Badge.mintBadge(badgeTokenIdToMint, amountToMint, {value: utils.parseEther(priceToPay.toString())});
+        setAmountToMint(0);
+        setBadgeTokenIdToMint(0);
+    }
+
+    const sendBadge = async () => {
+        const erc721Badge = await getERC721BadgeSigner();
+        await erc721Badge.sendBadge(beneficialAddresses.split(','), badgeTokenId);
+        setBadgeTokenId(0)
+        setBeneficialAddresses("")
     }
 
     return(
         <>
             <StyledContainer>
                 <StyledCard color="#ff9999">
-                    <h1>Still in progress.</h1>
-                    <h4><strong>Only admins can send a badge. If you want to test this out 
-                        send your mumbai address to me through email and i will make you an admin</strong>
+                    <h4><strong>Only admins can send a badge but anyone can mint a badge.
+                     If you want to test this out send your mumbai address to me through email and i will make you an admin 
+                     or just mint a badge</strong>
                     </h4>
-                    <StyledCardMini color="#fff">
-                        <p>{hyphenatedAddress}</p>
-
+                    
                         {!walletConnected && 
-                            <>
-                                <h5>Connect to polygon mumbai network</h5>
-                                <StyledButton bg='#cce6ff' onClick={connectWallet}>Connect</StyledButton>
-                            </>
+                            <StyledCardMini color="#fff">
+                                <>
+                                    <h5>Connect to polygon mumbai network</h5>
+                                    <StyledButton bg='#cce6ff' onClick={connectWallet}>Connect</StyledButton>
+                                </>
+                            </StyledCardMini>
                         }
+                    
+                    <Flex>
+                            {walletConnected && 
+                                <>
+                                    <StyledCardMedium color="#fff">
+                                        <>
+                                            <div>
+                                                <h3>Mint a badge (1 badge cost 0.01 matic)</h3>
+                                                <p>{hyphenatedAddress}</p>
+                                                <p>Enter the tokenId</p>
+                                                <input value={badgeTokenIdToMint} type="number" onChange={event => setBadgeTokenIdToMint(event.target.value)}/>
+                                            </div>
+                                            <div>
+                                                <p>Number of badges to mint</p>
+                                                <input value={amountToMint} type="number" onChange={event => setAmountToMint(event.target.value)}/>
+                                            </div>
+                                            
+                                            <StyledButton bg="#cce6ff" onClick={mintBadge}>Mint Badge</StyledButton>
+                                        </>
+                                    </StyledCardMedium>
 
-                        {walletConnected && 
-                            <>
-                                <div>
-                                    <p>Enter the addresses as comma separated values</p>
-                                    <input type="text" placeholder="e,g ab45,but67e,45thh" onChange={event => setBeneficialAddresses(event.target.value)} />
-                                </div>
-                                <div>
-                                    <p>Enter the tokenId</p>
-                                    <input type="number" onChange={event => setBadgeTokenId(event.target.value)}/>
-                                </div>
-                                
-                                <StyledButton bg="#cce6ff" onClick={mintBadge}>Mint Badge</StyledButton>
-                            </>
-}
-                    </StyledCardMini>
+                                    <StyledCardMedium color="#fff">
+                                        <>
+                                            <div>
+                                                <h3>Send a badge</h3>
+                                                <p>{hyphenatedAddress}</p>
+                                                <p>Enter the addresses as comma separated values</p>
+                                                <input value={beneficialAddresses} type="text" placeholder="e,g ab45,but67e,45thh" onChange={event => setBeneficialAddresses(event.target.value)} />
+                                            </div>
+                                            <div>
+                                                <p>Enter the tokenId</p>
+                                                <input value={badgeTokenId} type="number" onChange={event => setBadgeTokenId(event.target.value)}/>
+                                            </div>
+                                            
+                                            <StyledButton bg="#cce6ff" onClick={sendBadge}>Send Badge</StyledButton>
+                                        </>
+                                    </StyledCardMedium>
+                                </>
+                            }
+                        
+                    </Flex>
                 </StyledCard>
             </StyledContainer>
         </>
