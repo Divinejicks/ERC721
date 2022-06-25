@@ -24,10 +24,10 @@ export default function Header(){
                     </ImageContainer>
                     <StyledLinkDiv>
                         <Link href="/" passHref>
-                            <StyledLink onClick={newPathName} pathname={pathName}> Mint a face </StyledLink> 
+                            <StyledLink onClick={newPathName} pathname={pathName}> Mint a face (ERC721) </StyledLink> 
                         </Link>
                         <Link href="/badge" passHref> 
-                            <StyledLink  onClick={newPathName} pathname={pathName}> Send Badge  </StyledLink>
+                            <StyledLink  onClick={newPathName} pathname={pathName}> Send Badge (ERC1155)  </StyledLink>
                         </Link>
                     </StyledLinkDiv>
                 </StyledNav>
