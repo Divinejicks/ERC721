@@ -23,8 +23,8 @@ export default function Home() {
                 <h2>If you like what you see, send me an email</h2>
                 <p>
                     You can directly send me an email by clicking on the button below or sending
-                    me an email by copying my emial address and using it. <strong>mbuhdivinecho@gmail.com</strong>
-                    I will get back to you asap.
+                    me an email by copying my emial address and using it. <strong>mbuhdivinecho@gmail.com </strong>
+                     I will get back to you asap.
                 </p>
                 <StyledButton bg='#ff0099' color='#fff' onClick={() => window.location = 'mailto:mbuhdivinecho@gmail.com'}>
                     Contact me
