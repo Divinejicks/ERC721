@@ -1,11 +1,8 @@
-import { StyledContainer } from "../common_styles/Container.styled";
-import { StyledHeader, StyledNav, ImageContainer, StyledLink, StyledImage, StyledLinkDiv, LogoContainer } from "./Header.styled";
+import { StyledHeader, StyledNav, StyledLink, StyledLinkDiv, LogoContainer } from "./Header.styled";
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { StyledButton } from "../common_styles/Button.styled";
 import { useState } from "react";
-import { Flex } from "../common_styles/Flex.styled";
 
 export default function Header(){
     const router = useRouter();
@@ -26,10 +23,10 @@ export default function Header(){
                     </LogoContainer>
                     <StyledLinkDiv>
                         <Link href="/mint_face" passHref>
-                            <StyledLink onClick={newPathName} pathname={pathName}> Mint a face (ERC721) </StyledLink> 
+                            <StyledLink onClick={newPathName} pathname={pathName}> NFTs </StyledLink> 
                         </Link>
-                        <Link href="/badge" passHref> 
-                            <StyledLink  onClick={newPathName} pathname={pathName}> Send Badge (ERC1155)  </StyledLink>
+                        <Link href="/market_place" passHref>
+                            <StyledLink onClick={newPathName} pathname={pathName}> Market Place </StyledLink> 
                         </Link>
                     </StyledLinkDiv>
                 </StyledNav>

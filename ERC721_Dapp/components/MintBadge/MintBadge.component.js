@@ -117,7 +117,7 @@ export default function MintBadge() {
             <StyledContainer>
                 <WhiteColorDiv>
                     <p>
-                        This is to demonstrate how we can build an ERC721 NFT to send badges to persons who have 
+                        This is to demonstrate how we can build an ERC1155 NFT to send badges to persons who have 
                         gone through your training program or course.
                         <br/>
                         There are 3 badges: <strong>Biginner, Intermediate and Expert</strong> badges. Having 
