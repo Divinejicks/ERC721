@@ -1,7 +1,10 @@
 import Head from 'next/head';
+import { StyledButton } from '../components/common_styles/Button.styled';
 import { StyledContainer } from '../components/common_styles/Container.styled';
+import { Flex } from '../components/common_styles/Flex.styled';
 import Footer from '../components/Footer/Footer.component';
 import Header from '../components/Header/header.component';
+import { StyledImage } from '../components/Header/Header.styled';
 import MintAFace from '../components/MintAFace/MintAFace.component';
 
 export default function Home() {
@@ -15,22 +18,20 @@ export default function Home() {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <MintAFace />
-
-        <h2>All about <i>mint a face</i> project</h2>
-        <p>
-          This is to demonstrate how to mint an ERC721 NFT. In this sample project 
-          a person can mint upto 2 Jicks NFTs at a time. There is a total supply of 100. 
-          In this project i am using the hid and reveal method. At the lunch, NFTs minted 
-          are hidden and only the owner of the contract can reveal the NFTs. <br/>
-
-          This project uses <strong>Polygon mumbai testnet</strong> for low gas fees. The minting 
-          process can equally be paused and unpaused by the owner.<br/>
-
-          <strong>NB:</strong> measures are taken to ensure low gas fees. You can as well  
-          <i> Check out my ERC721-A project.</i>
-        </p>
-
+        <Flex>
+            <div>
+                <h2>If you like what you see, send me an email</h2>
+                <p>
+                    You can directly send me an email by clicking on the button below or sending
+                    me an email by copying my emial address and using it. <strong>mbuhdivinecho@gmail.com</strong>
+                    I will get back to you asap.
+                </p>
+                <StyledButton bg='#ff0099' color='#fff' onClick={() => window.location = 'mailto:mbuhdivinecho@gmail.com'}>
+                    Contact me
+                </StyledButton>
+            </div>
+            <StyledImage src="/assets/profilepic.jpeg" alt="Profile picture" />
+        </Flex>
       </StyledContainer>
       <Footer />
     </>

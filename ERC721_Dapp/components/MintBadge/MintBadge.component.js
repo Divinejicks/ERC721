@@ -8,6 +8,7 @@ import { ERC721Badge_ABI, ERC721Badge_Address } from "../../constants";
 import { Flex } from "../../components/common_styles/Flex.styled";
 import Dropdown from "../UserControls/DropdownUserControl/Dropdown.component";
 import { StyledInput, StyledInputSemi } from "../common_styles/Fields.styled";
+import { WhiteColorDiv } from "../common_styles/Color.styled";
 
 export default function MintBadge() {
     const [walletConnected, setWalletConnected] = useState(false);
@@ -114,7 +115,16 @@ export default function MintBadge() {
     return(
         <>
             <StyledContainer>
-                <StyledCard color="#ff9999">
+                <WhiteColorDiv>
+                    <p>
+                        This is to demonstrate how we can build an ERC721 NFT to send badges to persons who have 
+                        gone through your training program or course.
+                        <br/>
+                        There are 3 badges: <strong>Biginner, Intermediate and Expert</strong> badges. Having 
+                        token Ids on IPFS as 1, 2, and 3 respectively.
+                    </p>
+                </WhiteColorDiv>
+                <StyledCard color="#999999">
                     <h4><strong>Only admins can send a badge but anyone can mint a badge.
                      If you want to test this out send your mumbai address to me through email and i will make you an admin 
                      or just mint a badge</strong>

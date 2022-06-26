@@ -3,7 +3,7 @@ import GlobalStyles from "../styles/Global";
 
 const theme = {
   colors: {
-    header: '#cce6ff',
+    header: '#0d0d0d',
     body: '#fff',
     footer: '#f2f2f2'
   },

@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from 'react';
 import Web3Modal from 'web3modal';
 import { BigNumber, Contract, providers, utils } from 'ethers';
 import { ERC721Contract_ABI, ERC721Contract_Address } from "../../constants";
+import { WhiteColorDiv } from "../common_styles/Color.styled";
 
 export default function MintAFace() {
     const [walletConnected, setWalletConnected] = useState(false);
@@ -133,11 +134,11 @@ export default function MintAFace() {
     return(
         <>
             <Flex>
-                <div>
+                <WhiteColorDiv>
                     <h3>This is a gif preview of the NFT</h3>
                     <Image src="/assets/preview.gif" alt="Preview of gif" width={300} height={300} />
-                </div>
-                <StyledCard color='#ffc'>
+                </WhiteColorDiv>
+                <StyledCard color='#999999'>
                     <h1> {numberMinted} / 100</h1>
                     <p>{hyphenatedAddress}</p>
                     <h2> 1 JKS costs 0.01 matic</h2>
@@ -161,6 +162,21 @@ export default function MintAFace() {
                         </>
                     }
                 </StyledCard>
+                <WhiteColorDiv>
+                    <h2>All about <i>mint a face</i> project</h2>
+                    <p>
+                    This is to demonstrate how to mint an ERC721 NFT. In this sample project 
+                    a person can mint upto 2 Jicks NFTs at a time. There is a total supply of 100. 
+                    In this project i am using the hid and reveal method. At the lunch, NFTs minted 
+                    are hidden and only the owner of the contract can reveal the NFTs. <br/>
+
+                    This project uses <strong>Polygon mumbai testnet</strong> for low gas fees. The minting 
+                    process can equally be paused and unpaused by the owner.<br/>
+
+                    <strong>NB:</strong> measures are taken to ensure low gas fees. You can as well  
+                    <i> Check out my ERC721-A project.</i>
+                    </p>
+                </WhiteColorDiv>
             </Flex>
         </>
     )

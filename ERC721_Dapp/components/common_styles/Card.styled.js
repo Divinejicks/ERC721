@@ -8,7 +8,7 @@ export const StyledCard = styled.div`
     margin-top: 20px;
 
     @media(max-width: ${({theme}) => theme.mobile}) {
-      padding: 10px 50px ;
+      padding: 10px 50px;
       margin-top: 20px;
     }
 `;

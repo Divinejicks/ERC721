@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const StyledHeader = styled.header`
     background-color: ${({theme}) => theme.colors.header};
-    padding: 15px 0;
+    padding: 40px 0;
 `;
 
 export const StyledNav = styled.nav`
@@ -32,12 +32,23 @@ export const ImageContainer = styled.div`
     }
 `;
 
+export const LogoContainer = styled.div`
+  padding-left: 39px;
+  padding-top: 12px;
+  cursor: pointer;
+
+  @media(max-width: ${({theme}) => theme.mobile}) {
+      margin-bottom: 20px;
+      padding-left: 10px;
+    }
+`;
+
 export const StyledLink = styled.a`
   text-decoration: none;
   padding: 0 10px;
   padding: 10px;
   background-color: ${(props) => props.href === props.pathname ? "#b3b3ff" : ""};
-  color: ${(props) => props.href === props.pathname ? "#fff" : "#000"};
+  color: ${(props) => props.href === props.pathname ? "#fff" : "#fff"};
 
   &:hover {
     background: #99ccff;
@@ -48,7 +59,8 @@ export const StyledLink = styled.a`
 
 export const StyledLinkDiv = styled.div`
    @media(max-width: ${({theme}) => theme.mobile}) {
-      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
     }
 `;
 
