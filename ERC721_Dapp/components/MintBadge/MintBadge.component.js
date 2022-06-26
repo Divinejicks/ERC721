@@ -6,6 +6,8 @@ import Web3Modal from 'web3modal';
 import { Contract, providers, utils } from 'ethers';
 import { ERC721Badge_ABI, ERC721Badge_Address } from "../../constants";
 import { Flex } from "../../components/common_styles/Flex.styled";
+import Dropdown from "../UserControls/DropdownUserControl/Dropdown.component";
+import { StyledInput, StyledInputSemi } from "../common_styles/Fields.styled";
 
 export default function MintBadge() {
     const [walletConnected, setWalletConnected] = useState(false);
@@ -17,6 +19,12 @@ export default function MintBadge() {
     const [badgeTokenIdToMint, setBadgeTokenIdToMint] = useState(0);
     
     const web3ModalRef = useRef();
+
+    const options = [
+        {label: 'Beginner', value: 1},
+        {label: 'Intermediate', value: 2},
+        {label: 'Expert', value: 3}
+    ];
 
     useEffect(() => {
         if(!walletConnected){
@@ -129,12 +137,17 @@ export default function MintBadge() {
                                             <div>
                                                 <h3>Mint a badge (1 badge cost 0.01 matic)</h3>
                                                 <p>{hyphenatedAddress}</p>
-                                                <p>Enter the tokenId</p>
-                                                <input value={badgeTokenIdToMint} type="number" onChange={event => setBadgeTokenIdToMint(event.target.value)}/>
+                                                <Dropdown 
+                                                    label="Enter the tokenId"
+                                                    value={badgeTokenIdToMint}
+                                                    options={options}
+                                                    onChange={event => setBadgeTokenIdToMint(event.target.value)}
+                                                />
                                             </div>
                                             <div>
                                                 <p>Number of badges to mint</p>
-                                                <input value={amountToMint} type="number" onChange={event => setAmountToMint(event.target.value)}/>
+                                                <StyledInputSemi value={amountToMint} type="number" 
+                                                onChange={event => setAmountToMint(event.target.value)}/>
                                             </div>
                                             
                                             <StyledButton bg="#cce6ff" onClick={mintBadge}>Mint Badge</StyledButton>
@@ -147,11 +160,16 @@ export default function MintBadge() {
                                                 <h3>Send a badge</h3>
                                                 <p>{hyphenatedAddress}</p>
                                                 <p>Enter the addresses as comma separated values</p>
-                                                <input value={beneficialAddresses} type="text" placeholder="e,g ab45,but67e,45thh" onChange={event => setBeneficialAddresses(event.target.value)} />
+                                                <StyledInput value={beneficialAddresses} type="text" placeholder="e,g ab45,but67e,45thh" 
+                                                    onChange={event => setBeneficialAddresses(event.target.value)} />
                                             </div>
                                             <div>
-                                                <p>Enter the tokenId</p>
-                                                <input value={badgeTokenId} type="number" onChange={event => setBadgeTokenId(event.target.value)}/>
+                                                <Dropdown 
+                                                    label="Enter the tokenId"
+                                                    value={badgeTokenId}
+                                                    options={options}
+                                                    onChange={event => setBadgeTokenId(event.target.value)}
+                                                />
                                             </div>
                                             
                                             <StyledButton bg="#cce6ff" onClick={sendBadge}>Send Badge</StyledButton>
