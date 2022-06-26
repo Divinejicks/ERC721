@@ -21,6 +21,9 @@ export default function NFTHeader(){
                     <Link href="/badge" passHref> 
                         <StyledLink  onClick={newPathName} pathname={pathName}> Send Badge (ERC1155)  </StyledLink>
                     </Link>
+                    <Link href="/ERC721A" passHref> 
+                        <StyledLink  onClick={newPathName} pathname={pathName}> ERC721-A  </StyledLink>
+                    </Link>
                 </StyledLinkDiv>
             </StyledNav>
         </>

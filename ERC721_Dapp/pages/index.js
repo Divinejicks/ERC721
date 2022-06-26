@@ -5,7 +5,6 @@ import { Flex } from '../components/common_styles/Flex.styled';
 import Footer from '../components/Footer/Footer.component';
 import Header from '../components/Header/header.component';
 import { StyledImage } from '../components/Header/Header.styled';
-import MintAFace from '../components/MintAFace/MintAFace.component';
 
 export default function Home() {
   return (
