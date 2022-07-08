@@ -108,6 +108,7 @@ export default function MintAFace() {
 
     const mintJKS = async () => {
         const erc721Contract = await getERC721ContractSigner();
+        console.log("erc721Contract", erc721Contract)
         const currentPrice = await erc721Contract.price();
         const price = utils.formatEther(currentPrice);
         const priceToPay = quantityToMint*price;

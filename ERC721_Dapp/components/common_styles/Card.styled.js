@@ -58,3 +58,27 @@ export const StyledCardMedium = styled.div`
       width: 110%;
     }
 `;
+
+export const StyledCardSmall = styled.div`
+    text-align: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+    border-radius: 5%;
+    background-color: ${({color}) => color};
+    padding: 10px 5px;
+    margin: 5px;
+    max-width: 300px;
+
+    img {
+      position: relative;
+      top: 0;
+      left: 0;
+      height: 300px;
+      width: 300px;
+    }
+
+    @media(max-width: ${({theme}) => theme.mobile}) {
+      padding: 10px 20px ;
+      margin: 5px;
+      max-width: 300px;
+    }
+`;

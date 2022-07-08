@@ -12,6 +12,13 @@ export const StyledInputSemi = styled.input`
     box-sizing: border-box;
 `;
 
+export const StyledTextArea = styled.textarea`
+    width: 100%;
+    padding: 10px 5px;
+    box-sizing: border-box;
+    margin-top: 5px;
+`;
+
 export const StyledSelect = styled.select`
     width: 100%;
     padding: 10px 5px;

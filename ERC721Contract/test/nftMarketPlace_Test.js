@@ -104,7 +104,7 @@ describe('NFT Market place', () => {
             await (await marketPlace).connect(addr1).createItem((await nft).address, 1);
         });
 
-        it("Should put item on sale and emit Placed on sale event, Should faild if item is already on sale", async () => {
+        it("Should put item on sale and emit Placed on sale event, Should fail if item is already on sale", async () => {
 
             console.log("await (await nft).ownerOf(1)", await (await nft).ownerOf(1))
             expect(await (await marketPlace).connect(addr1).putItemOnSale(1, toWei(5)))

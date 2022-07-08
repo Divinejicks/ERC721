@@ -6,6 +6,8 @@ import { BigNumber, Contract, providers, utils } from 'ethers';
 import { StyledButton } from '../../common_styles/Button.styled';
 import { StyledLink, StyledLinkDiv, StyledNav } from '../../NFTHeader/NFTHeader.styled';
 import { MarketPlace_ABI, MarketPlace_Address, NFT_ABI, NFT_Address } from '../../../constants';
+import { useSelector, useDispatch } from 'react-redux'
+import { setNFTPlug, setMarketPlacePlug, setMyAddress } from '../../../pages/store/slice/walletSlice';
 
 export default function MarketPlaceHeader(){
     const [walletConnected, setWalletConnected] = useState(false);
@@ -16,16 +18,14 @@ export default function MarketPlaceHeader(){
 
     const web3ModalRef = useRef();
 
+    const dispatch = useDispatch()
+
     const router = useRouter();
     const [pathName, setPathName] = useState(router.pathname);
 
     const newPathName = () => {
         setPathName(router.pathname)
     }
-
-    // useEffect(() => {
-    //     newPathName();
-    // }, [pathName])
 
     useEffect(() => {
         if(!walletConnected){
@@ -51,13 +51,17 @@ export default function MarketPlaceHeader(){
 
         const addr = await web3Provider.getSigner().getAddress()
         setAddress(addr);
+
+        //save the connected wallet address to state
+        dispatch(setMyAddress(addr))
+
         const _addressSub1 = addr.substring(0, 5);
         const _addressSub2 = addr.substring(38);
         setHyphenatedAddress(_addressSub1 + "...." +_addressSub2);
         
         const signer = web3Provider.getSigner();
 
-        LoadContracts(signer);
+        await LoadContracts(signer);
     }
 
     const LoadContracts = async (signer) => {
@@ -68,7 +72,8 @@ export default function MarketPlaceHeader(){
         )
 
         setMarketplace(marketplace)
-
+        dispatch(setMarketPlacePlug(marketplace))
+        
         const nft = new Contract(
             NFT_Address,
             NFT_ABI,
@@ -76,6 +81,7 @@ export default function MarketPlaceHeader(){
         )
 
         setNft(nft);
+        dispatch(setNFTPlug(nft))
     }
 
     const connectWallet = async () => {
@@ -86,11 +92,6 @@ export default function MarketPlaceHeader(){
         catch(error) {
             console.log(error);
         }
-    }
-
-    const data = {
-        nft,
-        marketplace
     }
 
     return(
