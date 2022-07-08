@@ -48,7 +48,6 @@ export default function MarketPlaceHome() {
     }
 
     const buyMarketItem = async (item) => {
-        console.log("Price", item.price);
         await (await marketplaceplug.purchaseItem(item.itemId, {value: item.price})).wait()
         loadItemsOnMarketPlace();
     }
