@@ -7,7 +7,7 @@ import { StyledButton } from '../../common_styles/Button.styled';
 import { StyledLink, StyledLinkDiv, StyledNav } from '../../NFTHeader/NFTHeader.styled';
 import { MarketPlace_ABI, MarketPlace_Address, NFT_ABI, NFT_Address } from '../../../constants';
 import { useSelector, useDispatch } from 'react-redux'
-import { setNFTPlug, setMarketPlacePlug, setMyAddress } from '../../../pages/store/slice/walletSlice';
+import { setNFTPlug, setMarketPlacePlug, setMyAddress } from '../../../store/slice/walletSlice';
 
 export default function MarketPlaceHeader(){
     const [walletConnected, setWalletConnected] = useState(false);
