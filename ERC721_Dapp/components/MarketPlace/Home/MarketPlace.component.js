@@ -66,7 +66,7 @@ export default function MarketPlaceHome() {
                         {items.map((item, index) => (
                             <StyledCardSmall key={index}>
                                 <div>
-                                    <img src={item.image} />
+                                    <img src={item.image} alt="Nft image" />
                                 </div>
                                 <div>
                                     <strong>{item.name}</strong>
