@@ -73,7 +73,7 @@ export default function MyNFTs_MarketPlace() {
                                     <img src={item.image} />
                                 </div>
                                 <div>
-                                    <label>{item.name}</label>
+                                    <strong>{item.name}</strong>
                                 </div>
                                 <div>
                                     <label>{item.description}</label>

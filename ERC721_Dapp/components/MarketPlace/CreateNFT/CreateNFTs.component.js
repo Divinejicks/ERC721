@@ -55,7 +55,7 @@ export default function CreateNFTs_MarketPlace() {
     return(
         <>
             <StyledContainer>
-                <p><strong>NOTE: </strong> After clicking on "Create NFT", you have to confirm "3 transactions".
+                <p><strong>NOTE: </strong> After clicking on <strong>Create NFT </strong>, you have to confirm <strong>3 transactions</strong>.
                     <br/>
                     1. Minting the NFT. <br/>
                     2. Approving the market place to use your NFT. <br/>
