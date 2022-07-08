@@ -1,11 +1,10 @@
-import { StyledContainer } from "../common_styles/Container.styled";
 import { Flex } from "../common_styles/Flex.styled";
 import Image from 'next/image'
 import { StyledCard } from "../common_styles/Card.styled";
 import { StyledButton, StyledButtonCirlce } from "../common_styles/Button.styled";
 import { useEffect, useRef, useState } from 'react';
 import Web3Modal from 'web3modal';
-import { BigNumber, Contract, providers, utils } from 'ethers';
+import { Contract, providers, utils } from 'ethers';
 import { ERC721Contract_ABI, ERC721Contract_Address } from "../../constants";
 import { WhiteColorDiv } from "../common_styles/Color.styled";
 
