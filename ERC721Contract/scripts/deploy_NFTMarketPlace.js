@@ -9,13 +9,13 @@ const main = async () => {
 
     console.log("nftMarketPlace deployed on ", (await nftMarketPlace).address);
 
-    // console.log("Sleeping.......");
-    // await sleep(400000);
+    console.log("Sleeping.......");
+    await sleep(400000);
 
-    // await hre.run("verify:verify", {
-    //     address: (await nftMarketPlace).address,
-    //     constructorArguments: [],
-    // });
+    await hre.run("verify:verify", {
+        address: (await nftMarketPlace).address,
+        constructorArguments: [],
+    });
 }
 
 function sleep(ms) {

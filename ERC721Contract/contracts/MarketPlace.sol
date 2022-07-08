@@ -58,8 +58,7 @@ contract MarketPlace is ReentrancyGuard, Ownable, IERC721Receiver {
         receiveFeeAccount = payable(msg.sender);
     }
 
-    function createItem(IERC721 _nft, uint256 _tokenId, uint256 _price) external nonReentrant {
-        require(_price > 0, "Price must be greater than zero");
+    function createItem(IERC721 _nft, uint256 _tokenId) external nonReentrant {
         itemCount++;
         _nft.safeTransferFrom(msg.sender, address(this), _tokenId);
 
@@ -67,21 +66,23 @@ contract MarketPlace is ReentrancyGuard, Ownable, IERC721Receiver {
             itemCount,
             _nft,
             _tokenId,
-            _price,
+            0,
             payable(msg.sender),
             false,
             false
         );
 
-        emit CreatedItem(itemCount, address(_nft), _tokenId, _price, msg.sender, false);
+        emit CreatedItem(itemCount, address(_nft), _tokenId, 0, msg.sender, false);
     }
 
-    function putItemOnSale(uint256 _itemId) external nonReentrant {
+    function putItemOnSale(uint256 _itemId, uint256 _price) external nonReentrant {
+        require(_price > 0, "Price must be greater than zero");
         Item storage _item = items[_itemId];
         require(!_item.isOnSale, "Item is already on sale");
         require(_item.seller == msg.sender, "You are not the owner");
 
         _item.isOnSale = true;
+        _item.price = _price;
         emit PlacedItemOnSale(_itemId, address(_item.nft), _item.tokenId, _item.price,_item.seller, true);
     }
 

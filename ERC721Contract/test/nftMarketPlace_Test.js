@@ -70,13 +70,13 @@ describe('NFT Market place', () => {
         });
 
         it("Should put NFT on marketplace and emit created item event", async () => {
-            expect(await (await marketPlace).connect(addr1).createItem((await nft).address, 1, toWei(1)))
+            expect(await (await marketPlace).connect(addr1).createItem((await nft).address, 1))
                 .to.emit(marketPlace, "CreatedItem")
                 .withArgs(
                     1,
                     (await nft).address,
                     1,
-                    toWei(1),
+                    toWei(0),
                     addr1.address,
                     false
                 );
@@ -90,29 +90,24 @@ describe('NFT Market place', () => {
             expect(item.itemId).to.equal(1);
             expect(item.nft).to.equal((await nft).address);
             expect(item.tokenId).to.equal(1);
-            expect(item.price).to.equal(toWei(1));
+            expect(item.price).to.equal(toWei(0));
             expect(item.seller).to.equal(addr1.address);
             expect(item.sold).to.equal(false);
             expect(item.isOnSale).to.equal(false);
         });
-
-        it("Should fail when price is zero", async () => {
-            await expect((await marketPlace).connect(addr1).createItem((await nft).address, 1, 0))
-            .to.be.revertedWith("Price must be greater than zero");
-        } );
     });
 
     describe("Put item on sale", () => {
         beforeEach(async () => {
             await (await nft).connect(addr1).mint(URI);
             await (await nft).connect(addr1).setApprovalForAll((await marketPlace).address, true); 
-            await (await marketPlace).connect(addr1).createItem((await nft).address, 1, toWei(5));
+            await (await marketPlace).connect(addr1).createItem((await nft).address, 1);
         });
 
         it("Should put item on sale and emit Placed on sale event, Should faild if item is already on sale", async () => {
 
             console.log("await (await nft).ownerOf(1)", await (await nft).ownerOf(1))
-            expect(await (await marketPlace).connect(addr1).putItemOnSale(1))
+            expect(await (await marketPlace).connect(addr1).putItemOnSale(1, toWei(5)))
              .to.emit(marketPlace, "PlacedItemOnSale")
              .withArgs(
                 1,
@@ -124,15 +119,22 @@ describe('NFT Market place', () => {
              )
 
              expect((await (await marketPlace).items(1)).isOnSale).to.equal(true);
+             //get the price
+             expect((await (await marketPlace).items(1)).price).to.equal(toWei(5));
              //check for seller
              expect((await (await marketPlace).items(1)).seller).to.equal(addr1.address);
 
-             await expect((await marketPlace).connect(addr1).putItemOnSale(1))
+             await expect((await marketPlace).connect(addr1).putItemOnSale(1, toWei(5)))
             .to.be.revertedWith("Item is already on sale");
         } );
 
+        it("Should fail when price is zero", async () => {
+            await expect((await marketPlace).connect(addr1).putItemOnSale(1, 0))
+            .to.be.revertedWith("Price must be greater than zero");
+        } );
+
         it("Fail if seller is not the owner", async () => {
-            await expect((await marketPlace).connect(addr3).putItemOnSale(1))
+            await expect((await marketPlace).connect(addr3).putItemOnSale(1, toWei(5)))
             .to.be.revertedWith("You are not the owner");
         })
     })
@@ -142,8 +144,8 @@ describe('NFT Market place', () => {
         beforeEach(async () => {
             await (await nft).connect(addr1).mint(URI);
             await (await nft).connect(addr1).setApprovalForAll((await marketPlace).address, true); 
-            await (await marketPlace).connect(addr1).createItem((await nft).address, 1, toWei(price));
-            await (await marketPlace).connect(addr1).putItemOnSale(1);
+            await (await marketPlace).connect(addr1).createItem((await nft).address, 1);
+            await (await marketPlace).connect(addr1).putItemOnSale(1, toWei(price));
         });
 
         it("Should update item as sold, send nft to buyer, pay the seller, pay listing fee to receive fee account, emit Bought event", async () => {
@@ -197,7 +199,7 @@ describe('NFT Market place', () => {
             //Create a second NFT
             await (await nft).connect(addr1).mint(URI);
             //Addr1 creates item 2
-            await (await marketPlace).connect(addr1).createItem((await nft).address, 2, toWei(price));
+            await (await marketPlace).connect(addr1).createItem((await nft).address, 2);
             //addr2 tries purchasing the item when it is not yet on sale
             await expect((await marketPlace).connect(addr2).purchaseItem(2, {value: toWei(price)}))
             .to.be.revertedWith("Item is not yet on sale");
