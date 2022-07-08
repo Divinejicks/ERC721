@@ -5,6 +5,7 @@ import { StyledContainer } from '../../common_styles/Container.styled'
 import { Flex } from '../../common_styles/Flex.styled'
 import { StyledCardSmall } from '../../common_styles/Card.styled'
 import { StyledButton, StyledButtonCirlce } from '../../common_styles/Button.styled'
+import { StyledInput, StyledInputSemi, StyledInputSmall } from '../../common_styles/Fields.styled'
 
 
 export default function MyNFTs_MarketPlace() {
@@ -14,6 +15,7 @@ export default function MyNFTs_MarketPlace() {
 
     const [items, setItems] = useState([])
     const [loading, setLoading] = useState(true)
+    const [price, setPrice] = useState(null);
 
     useEffect(() => {
         loadItemsOnMarketPlace()
@@ -54,6 +56,7 @@ export default function MyNFTs_MarketPlace() {
         console.log("Price", item.price);
         await (await marketplaceplug.putItemOnSale(item.itemId, utils.parseEther(price.toString()))).wait()
         loadItemsOnMarketPlace();
+        setPrice(null)
     }
 
     if(loading) return (
@@ -79,6 +82,11 @@ export default function MyNFTs_MarketPlace() {
                                     <label>{item.description}</label>
                                 </div>
                                 <hr/>
+                                <div>
+                                    <label>Price in ETH</label>
+                                    <StyledInputSmall type="number" placeholder="Price" 
+                                        onChange={(e) => setPrice(e.target.value)} />
+                                </div>
                                 <div>
                                     <StyledButton bg='#ff0099' color='#fff' 
                                         onClick={() => sellMarketItem(item)}>Sell for {utils.formatEther(item.price)} ETH

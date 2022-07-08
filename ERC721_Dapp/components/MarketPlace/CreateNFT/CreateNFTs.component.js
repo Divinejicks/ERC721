@@ -50,6 +50,9 @@ export default function CreateNFTs_MarketPlace() {
         await (await nftPlug.setApprovalForAll(marketplaceplug.address, true)).wait()
         //add nft to market place
         await (await marketplaceplug.createItem(nftPlug.address, tokenId)).wait();
+        setImage('')
+        setName('')
+        setDescription('')
     }
 
     return(

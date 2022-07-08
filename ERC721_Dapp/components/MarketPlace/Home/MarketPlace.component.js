@@ -4,6 +4,7 @@ import { utils } from 'ethers'
 import { StyledContainer } from '../../common_styles/Container.styled'
 import { Flex } from '../../common_styles/Flex.styled'
 import { StyledCardSmall } from '../../common_styles/Card.styled'
+import { StyledButton } from '../../common_styles/Button.styled'
 
 
 export default function MarketPlaceHome() {
@@ -61,19 +62,28 @@ export default function MarketPlaceHome() {
     return(
         <>
             <StyledContainer>
-                {items.length > 0 ? 
-                    <div>
+                {items.length > 0 ?
+                    <Flex>
                         {items.map((item, index) => (
-                            <Flex key={index}>
-                                <StyledCardSmall>
+                            <StyledCardSmall key={index}>
+                                <div>
                                     <img src={item.image} />
-                                    <label>{item.name}</label>
+                                </div>
+                                <div>
+                                    <strong>{item.name}</strong>
+                                </div>
+                                <div>
                                     <label>{item.description}</label>
-                                    <button onClick={() => buyMarketItem(item)}>Buy for {utils.formatEther(item.price)} ETH</button>
-                                </StyledCardSmall>
-                            </Flex>
+                                </div>
+                                <hr/>
+                                <div>
+                                    <StyledButton bg='#ff0099' color='#fff' 
+                                        onClick={() => buyMarketItem(item)}>Buy for {utils.formatEther(item.price)} ETH
+                                    </StyledButton>
+                                </div>
+                            </StyledCardSmall>
                         ))}
-                    </div>
+                    </Flex>
                 : (
                     <Flex>
                         <h3>No assets are listed</h3>
