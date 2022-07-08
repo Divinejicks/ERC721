@@ -16,7 +16,7 @@ export default function MarketPlaceHome() {
 
     useEffect(() => {
         loadItemsOnMarketPlace()
-    }, [])
+    })
 
     const loadItemsOnMarketPlace = async () => {
         if(marketplaceplug?.address !== undefined) {

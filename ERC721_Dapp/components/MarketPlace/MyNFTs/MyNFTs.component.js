@@ -6,6 +6,7 @@ import { Flex } from '../../common_styles/Flex.styled'
 import { StyledCardSmall } from '../../common_styles/Card.styled'
 import { StyledButton, StyledButtonCirlce } from '../../common_styles/Button.styled'
 import { StyledInput, StyledInputSemi, StyledInputSmall } from '../../common_styles/Fields.styled'
+import Image from 'next/image'
 
 
 export default function MyNFTs_MarketPlace() {
@@ -19,7 +20,7 @@ export default function MyNFTs_MarketPlace() {
 
     useEffect(() => {
         loadItemsOnMarketPlace()
-    }, [])
+    })
 
     const loadItemsOnMarketPlace = async () => {
         if(marketplaceplug?.address !== undefined) {
@@ -73,7 +74,7 @@ export default function MyNFTs_MarketPlace() {
                         {items.map((item, index) => (
                             <StyledCardSmall key={index}>
                                 <div>
-                                    <img src={item.image} />
+                                    <img src={item.image} alt="NFT Image" />
                                 </div>
                                 <div>
                                     <strong>{item.name}</strong>
