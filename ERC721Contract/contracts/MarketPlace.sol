@@ -5,6 +5,10 @@ import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol";
+import "@openzeppelin/contracts/utils/introspection/ERC165Checker.sol";
+import "@openzeppelin/contracts/interfaces/IERC2981.sol";
+
+import "./NFTMarketPlace.sol";
 
 import "hardhat/console.sol";
 
@@ -93,13 +97,19 @@ contract MarketPlace is ReentrancyGuard, Ownable, IERC721Receiver {
         require(!item.sold, "Item already sold");
         require(item.isOnSale, "Item is not yet on sale");
 
-        uint256 amountToSeller = (item.price*90)/100;
         uint256 amountToFeeAccount = (item.price*10)/100;
+        (address royaltyReceiver, uint256 creatorShare) = _getShareFromRoyalty(item);
+        uint256 amountToSeller = item.price - amountToFeeAccount - creatorShare;
 
         (bool sentToSeller, ) = item.seller.call{value: amountToSeller}("");
         require(sentToSeller, "Failed to send ether to seller");
         (bool sendFeeAccount,) = receiveFeeAccount.call{value: amountToFeeAccount}("");
         require(sendFeeAccount, "Failed to send ether to fee account");
+
+        if(creatorShare > 0 && royaltyReceiver != address(0)) {
+            (bool sendRoyaltyFee,) = payable(royaltyReceiver).call{value: creatorShare}("");
+            require(sendRoyaltyFee, "Failed to send royalty fee");
+        }
 
         item.sold = true;
         item.isOnSale = false;
@@ -114,6 +124,24 @@ contract MarketPlace is ReentrancyGuard, Ownable, IERC721Receiver {
 
     function updateListingFeePercentage(uint8 _percent) external onlyOwner {
         listingFeePercentage = _percent;
+    }
+
+    function _getShareFromRoyalty(Item storage item) view private returns(address, uint256){
+        //Checking if royalty interface is supported
+        if(ERC165Checker.supportsInterface(address(item.nft), type(IERC2981).interfaceId)){
+            //get creator and percent from Royalty
+            (address creatorAddress, uint256 creatorShare) = NFTMarketPlace(address(item.nft)).royaltyInfo(item.tokenId, item.price);
+            
+            if(creatorAddress == item.seller) {
+                creatorShare = 0;
+            }
+
+            return (creatorAddress, creatorShare);
+        }
+        else {
+            //If the royalty interface is not supported
+            return(address(0), 0);
+        }
     }
 
     function onERC721Received(

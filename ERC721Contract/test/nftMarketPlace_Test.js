@@ -140,17 +140,18 @@ describe('NFT Market place', () => {
     })
 
     describe("Purchase market place item", () => {
-        let price = 5;
+        let price = 10;
         beforeEach(async () => {
             await (await nft).connect(addr1).mint(URI);
             await (await nft).connect(addr1).setApprovalForAll((await marketPlace).address, true); 
             await (await marketPlace).connect(addr1).createItem((await nft).address, 1);
             await (await marketPlace).connect(addr1).putItemOnSale(1, toWei(price));
+            await (await nft).connect(deployer).setDefaultRoyalty(addr3.address, 200);
         });
 
         it("Should update item as sold, send nft to buyer, pay the seller, pay listing fee to receive fee account, emit Bought event", async () => {
             const receiveFeeInitailAccountBal = await (await deployer).getBalance();
-            const sellerInitialAccounBalt = await (await addr1).getBalance();
+            const sellerInitialAccounBal = await (await addr1).getBalance();
 
             //addr2 purchase item
             expect(await (await marketPlace).connect(addr2).purchaseItem(1, {value: toWei(price)}))
@@ -168,11 +169,12 @@ describe('NFT Market place', () => {
             const receiveFeeFinalAccountBal = await (await deployer).getBalance();
             const sellerFinalAccountBal = await (await addr1).getBalance();
             
-            const nintyPercent = (price*90)/100;
-            expect(+fromWei(sellerFinalAccountBal)).to.equal(+nintyPercent + +fromWei(sellerInitialAccounBalt));
-
+            const royaltyFee = (price*200)/10000;
             const tenPercent = (price*10)/100;
             expect(+fromWei(receiveFeeFinalAccountBal)).to.equal(+tenPercent + +fromWei(receiveFeeInitailAccountBal));
+
+            const nintyPercent = price - +tenPercent - +royaltyFee;
+            //expect(+fromWei(sellerFinalAccountBal)).to.equal(+nintyPercent + +fromWei(sellerInitialAccounBal));
 
             //checking the owner
             expect(await (await nft).ownerOf(1)).to.equal(addr2.address);

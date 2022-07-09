@@ -2102,55 +2102,6 @@ export const NFT_ABI = [
   {
     "inputs": [
       {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "name": "items",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "itemId",
-        "type": "uint256"
-      },
-      {
-        "internalType": "contract IERC721",
-        "name": "nft",
-        "type": "address"
-      },
-      {
-        "internalType": "uint256",
-        "name": "tokenId",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "price",
-        "type": "uint256"
-      },
-      {
-        "internalType": "address payable",
-        "name": "seller",
-        "type": "address"
-      },
-      {
-        "internalType": "bool",
-        "name": "sold",
-        "type": "bool"
-      },
-      {
-        "internalType": "bool",
-        "name": "isOnSale",
-        "type": "bool"
-      }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
         "internalType": "string",
         "name": "_tokenURI",
         "type": "string"
@@ -2222,6 +2173,35 @@ export const NFT_ABI = [
   {
     "inputs": [
       {
+        "internalType": "uint256",
+        "name": "tokenId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "salePrice",
+        "type": "uint256"
+      }
+    ],
+    "name": "royaltyInfo",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
         "internalType": "address",
         "name": "from",
         "type": "address"
@@ -2284,6 +2264,24 @@ export const NFT_ABI = [
       }
     ],
     "name": "setApprovalForAll",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_receiver",
+        "type": "address"
+      },
+      {
+        "internalType": "uint96",
+        "name": "_feeNumerator",
+        "type": "uint96"
+      }
+    ],
+    "name": "setDefaultRoyalty",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -2390,7 +2388,7 @@ export const NFT_ABI = [
   }
 ]
 
-export const NFT_Address = "0x20ce4afE857B506613266da77d2df014B1779aA2"
+export const NFT_Address = "0xa163e3481299595433370460CbA81Db971D1ea8e"
 
 export const MarketPlace_ABI = [
   {
@@ -2784,4 +2782,4 @@ export const MarketPlace_ABI = [
   }
 ]
 
-export const MarketPlace_Address = "0xc7d2e08Cc6f1b967aCdE91FA8C26177333780bD9"
+export const MarketPlace_Address = "0xb32Fa3768058b243A76BF7739b582Da99651261C"
