@@ -111,18 +111,23 @@ export default function MarketPlaceHeader(){
                         <StyledLink  onClick={newPathName} pathname={pathName}> Purchased NFTs </StyledLink>
                     </Link>
                 </StyledLinkDiv>
-                {!walletConnected &&
-                    <>
-                        <StyledButton onClick={connectWallet}>
-                            Connect
+                <div>
+                    <Link href="/market_place/admin" passHref> 
+                        <StyledLink  onClick={newPathName} pathname={pathName}> Admin </StyledLink>
+                    </Link>
+                    {!walletConnected &&
+                        <>
+                            <StyledButton onClick={connectWallet}>
+                                Connect
+                            </StyledButton>
+                        </>
+                    }
+                    {walletConnected &&
+                        <StyledButton>
+                            {hyphenatedAddress}
                         </StyledButton>
-                    </>
-                }
-                {walletConnected &&
-                    <StyledButton>
-                        {hyphenatedAddress}
-                    </StyledButton>
-                }
+                    }
+                </div>
             </StyledNav>
         </>
     )
