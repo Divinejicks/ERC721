@@ -2782,4 +2782,4 @@ export const MarketPlace_ABI = [
   }
 ]
 
-export const MarketPlace_Address = "0xb32Fa3768058b243A76BF7739b582Da99651261C"
+export const MarketPlace_Address = "0xa865eE1647ddB5D7B6c483add42e275a6d698Bf0"
