@@ -11,7 +11,7 @@ import "hardhat/console.sol";
 contract NFTMarketPlace is ERC721URIStorage, Ownable, ERC2981 {
     uint256 public tokenIdCount;
 
-    constructor() ERC721("Jicks MToken", "JKSM") {
+    constructor() ERC721("Jicks MTokens", "JKSM") {
         setDefaultRoyalty(msg.sender, 200);
     }
 

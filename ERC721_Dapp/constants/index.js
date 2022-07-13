@@ -2388,7 +2388,7 @@ export const NFT_ABI = [
   }
 ]
 
-export const NFT_Address = "0xa163e3481299595433370460CbA81Db971D1ea8e"
+export const NFT_Address = "0x6fc9cA0Cdd5f500A19Ea054cA4a057303586Eb5d"
 
 export const MarketPlace_ABI = [
   {
