@@ -110,6 +110,9 @@ export default function MarketPlaceHeader(){
                     <Link href="/market_place/purchased_nfts" passHref> 
                         <StyledLink  onClick={newPathName} pathname={pathName}> Purchased NFTs </StyledLink>
                     </Link>
+                    <Link href="/market_place/stake_nfts" passHref> 
+                        <StyledLink  onClick={newPathName} pathname={pathName}> Stake NFTs </StyledLink>
+                    </Link>
                 </StyledLinkDiv>
                 <div>
                     <Link href="/market_place/admin" passHref> 
