@@ -28,6 +28,9 @@ export default function Header(){
                         <Link href="/market_place" passHref>
                             <StyledLink onClick={newPathName} pathname={pathName}> Market Place </StyledLink> 
                         </Link>
+                        <Link href="/dao" passHref>
+                            <StyledLink onClick={newPathName} pathname={pathName}> Jicks DAO </StyledLink> 
+                        </Link>
                     </StyledLinkDiv>
                 </StyledNav>
             </StyledHeader>
