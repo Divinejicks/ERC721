@@ -22,3 +22,16 @@ This site is used to send badges to graduating student or end of course
 3. Has the pause and unpause
 4. Uses polygon
 
+C: **MINT AN NFT USING ERC721A**
+---------------------------------
+In this site, we mint nft using the erc721a standard. Cheap for multiple minting.
+
+D: **NFT MARKET PLACE**
+------------------------
+This is the nft market place example using **royalty erc2981** standard
+1. Create your nft in **Create NFT** menu
+2. After creating the nft, you can find it under **My NFTs** menu
+3. You can put your nfts to the market place 
+4. You will see your nft in the **Market place** menu
+5. People can now purchase your NFTs.
+6. There is an admin session where the admin can change the royalty fee and the receiver.
