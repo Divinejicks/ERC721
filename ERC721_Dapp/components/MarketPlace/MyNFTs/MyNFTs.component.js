@@ -22,26 +22,16 @@ export default function MyNFTs_MarketPlace() {
     })
 
     const loadItemsOnMarketPlace = async () => {
-        console.log("1")
         if(marketplaceplug?.address !== undefined) {
-            console.log("2")
             const itemCount = await marketplaceplug.itemCount();
-            console.log("itemCount", itemCount)
-            console.log("3")
         let items = []
         for(let i = 1; i <= itemCount; i++){
             const item = await marketplaceplug.items(i);
-            console.log("4")
             if(!item.isOnSale && item.seller === myAddress && !item.sold) {
-                console.log("5")
                 //get uri url from nft contract
                 const uri = await nftPlug.tokenURI(item.tokenId);
-                console.log("item", item)
-                console.log("6")
                 //the uri is used to fetch nft metadata from ipfs
-                console.log("uri", uri)
                 const response = await fetch(uri);
-                console.log("7")
                 const metadata = await response.json();
 
                 items.push({
