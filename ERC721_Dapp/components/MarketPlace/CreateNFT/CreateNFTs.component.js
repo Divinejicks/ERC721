@@ -6,7 +6,19 @@ import { useState } from "react";
 import { StyledContainer } from "../../common_styles/Container.styled";
 import { StyledInput, StyledTextArea } from "../../common_styles/Fields.styled";
 import { StyledButton } from "../../common_styles/Button.styled";
-const client = ipfsHttpClient('https://ipfs.infura.io:5001/api/v0')
+
+const projectId = "2QT8sTOtKxppuIZempBPl1DuyjP";
+const projectSecret = "43b7c1553060a3545d728d44a670a8f2";
+const auth = `Basic ${Buffer.from(`${projectId}:${projectSecret}`).toString('base64')}`;
+
+const client = ipfsHttpClient({
+    host: 'ipfs.infura.io',
+    port: 5001,
+    protocol: 'https',
+    headers: {
+      authorization: auth,
+    },
+  });
 
 export default function CreateNFTs_MarketPlace() {
     const nftPlug = useSelector((state) => state.walletPlug.nft)
@@ -23,7 +35,7 @@ export default function CreateNFTs_MarketPlace() {
             try {
                 const result = await client.add(file)
                 console.log("result", result)
-                setImage(`https://ipfs.infura.io/ipfs/${result.path}`)
+                setImage(`https://divinejicks.infura-ipfs.io/ipfs/${result.path}`)  
             } catch (error) {
                 console.log("failed to upload image to ipfs", error);
             }

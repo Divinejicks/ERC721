@@ -10,9 +10,9 @@ contract ERC721ANFT is ERC721A, Ownable, Pausable {
     uint256 MAX_SUPPLY = 500;
     uint256 public mintRate = 0.01 ether;
 
-    string public baseURI = "ipfs://QmZ6PoHDbg7LbNJ8NDywqcg5ywpFh3YVotNzx5iD5q1TyB/";
+    string public baseURI = "ipfs://QmaRjbcetRiQom1hcTRXvD8AHJbQ9z8rvrvUAK1YpAX3Sd/";
 
-    constructor() ERC721A("Jicks_V2", "JKSV") {}
+    constructor() ERC721A("JicksRC721A", "JKSV") {}
 
     function mint(uint256 quantity) external payable {
         // _safeMint's second argument now takes in a quantity, not a tokenId.

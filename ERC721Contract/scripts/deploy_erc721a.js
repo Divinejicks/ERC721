@@ -9,13 +9,13 @@ const main = async () => {
 
     console.log("erc721ANFT deployed on ", (await erc721ANFT).address);
 
-    console.log("Sleeping.......");
-    await sleep(400000);
+    // console.log("Sleeping.......");
+    // await sleep(400000);
 
-    await hre.run("verify:verify", {
-        address: (await erc721ANFT).address,
-        constructorArguments: [],
-    });
+    // await hre.run("verify:verify", {
+    //     address: (await erc721ANFT).address,
+    //     constructorArguments: [],
+    // });
 }
 
 function sleep(ms) {
