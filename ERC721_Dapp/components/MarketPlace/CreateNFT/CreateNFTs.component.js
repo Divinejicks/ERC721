@@ -54,7 +54,7 @@ export default function CreateNFTs_MarketPlace() {
     }
 
     const mintNFTAndList = async (result) => {
-        const uri = `https://ipfs.infura.io/ipfs/${result.path}`;
+        const uri = `https://divinejicks.infura-ipfs.io/ipfs/${result.path}`;
         //mint nft
         await (await nftPlug.mint(uri)).wait();
         const tokenId = await nftPlug.tokenIdCount();
