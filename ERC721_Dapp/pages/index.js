@@ -21,13 +21,13 @@ export default function Home() {
     },
     {
       title: 'Enkaare',
-      description: 'Enkaare is a talent hiring company that focuses on helping businesses find the best talent wherever they may be located acrose the globe.',
+      description: 'Enkaare is a talent hiring company that focuses on helping businesses find the best talent wherever they may be located across the globe.',
       imageUrl: '/assets/enkLogo.png',
       link: 'https://enkaare.com/',
     },
     {
       title: 'CodeInBlock',
-      description: 'CodeInBlock, is a Decentralize Autonomous Organization (DAO) that aims to EQUIP young Africans with the right SKILLS and KNOWLEDGE to be able to contribute to their community by building BLOCKCHAIN based solutions that can solve most AFRICAN problems that blockchain technology can address.',
+      description: 'CodeInBlock, is a Decentralized Autonomous Organization (DAO) that aims to equip young Africans with the right skills and knowledge to contribute to their community.',
       imageUrl: '/assets/cibLogo.png',
       link: 'https://codeinblock.com/',
     },
@@ -46,20 +46,8 @@ export default function Home() {
   ];
 
   const languages = [
-    'Solidity',
-    'JavaScript',
-    'TypeScript',
-    'Node.js',
-    'C#',
-    'HTML/CSS',
-    'SQL',
-    'MongoDB',
-    'MySQL',
-    'Tailwind CSS',
-    'Next.js',
-    'Viem',
-    'Radom',
-    'Moralis'
+    'Solidity', 'JavaScript', 'TypeScript', 'Node.js', 'C#', 'HTML/CSS', 'SQL', 'MongoDB', 'MySQL', 
+    'Tailwind CSS', 'Next.js', 'Viem', 'Radom', 'Moralis'
   ];
 
   return (
@@ -72,10 +60,11 @@ export default function Home() {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
+        {/* Hero Section */}
         <Flex style={{ justifyContent: 'space-between', alignItems: 'center', marginBottom: '3rem' }}>
-          <div>
-            <h2 style={{ color: '#ff0099' }}>If you like what you see, send me an email</h2>
-            <p>
+          <div style={{ maxWidth: '600px' }}>
+            <h2 style={{ color: '#ff0099', fontSize: '2rem', marginBottom: '1rem' }}>Get In Touch</h2>
+            <p style={{ lineHeight: '1.6' }}>
               You can send me an email by clicking on the button below or by copying my email address. 
               <strong> mbuhdivinecho@gmail.com </strong>. I will get back to you as soon as possible.
             </p>
@@ -83,13 +72,13 @@ export default function Home() {
               Contact me
             </StyledButton>
           </div>
-          <StyledImage src="/assets/profilepic.jpeg" alt="Profile picture" />
+          <StyledImage src="/assets/profilepic.jpeg" alt="Profile picture" style={{ borderRadius: '50%', maxWidth: '250px' }} />
         </Flex>
 
         {/* About Me Section */}
         <section>
-          <h3 style={{ color: '#ff0099', marginBottom: '1rem' }}>About Me</h3>
-          <p>
+          <h3 style={{ color: '#ff0099', marginBottom: '1rem', fontSize: '1.8rem' }}>About Me</h3>
+          <p style={{ lineHeight: '1.6' }}>
             I am the Co-founder and CTO of{' '}
             <a
               href="https://www.peace-keepers.io/"
@@ -102,10 +91,10 @@ export default function Home() {
           </p>
         </section>
 
-        {/* What I Can Do Section */}
+        {/* Skills Section */}
         <section style={{ marginTop: '3rem' }}>
-          <h3 style={{ color: '#ff0099', marginBottom: '1rem' }}>What I Can Do</h3>
-          <ul style={{ listStyleType: 'none', padding: 0 }}>
+          <h3 style={{ color: '#ff0099', marginBottom: '1rem', fontSize: '1.8rem' }}>Skills & Expertise</h3>
+          <ul style={{ listStyleType: 'none', padding: 0, columns: 2, columnGap: '2rem' }}>
             {skills.map((skill, index) => (
               <li key={index} style={{ marginBottom: '0.5rem', color: '#fff' }}>
                 - {skill}
@@ -116,8 +105,8 @@ export default function Home() {
 
         {/* Programming Languages Section */}
         <section style={{ marginTop: '3rem' }}>
-          <h3 style={{ color: '#ff0099', marginBottom: '1rem' }}>Programming Languages</h3>
-          <ul style={{ listStyleType: 'none', padding: 0 }}>
+          <h3 style={{ color: '#ff0099', marginBottom: '1rem', fontSize: '1.8rem' }}>Programming Languages</h3>
+          <ul style={{ listStyleType: 'none', padding: 0, columns: 2, columnGap: '2rem' }}>
             {languages.map((language, index) => (
               <li key={index} style={{ marginBottom: '0.5rem', color: '#fff' }}>
                 - {language}
@@ -127,7 +116,7 @@ export default function Home() {
         </section>
 
         {/* Project Carousel */}
-        <h3 style={{ textAlign: 'center', color: '#ff0099', marginTop: '4rem' }}>My Past Projects</h3>
+        <h3 style={{ textAlign: 'center', color: '#ff0099', marginTop: '4rem', fontSize: '2rem' }}>My Past Projects</h3>
         <Swiper
           slidesPerView={1}
           spaceBetween={30}
@@ -137,14 +126,14 @@ export default function Home() {
           navigation={true}
           modules={[Pagination, Navigation]}
           className="mySwiper"
-          style={{ marginTop: '2rem' }}
+          style={{ marginTop: '2rem', maxWidth: '800px', marginLeft: 'auto', marginRight: 'auto' }}
         >
           {projects.map((project, index) => (
             <SwiperSlide key={index}>
               <div style={{ textAlign: 'center', padding: '1rem', borderRadius: '10px', background: '#1c1c1c' }}>
                 <img src={project.imageUrl} alt={project.title} style={{ width: '100%', height: 'auto', borderRadius: '10px' }} />
                 <h4 style={{ color: '#fff', marginTop: '1rem' }}>{project.title}</h4>
-                <p style={{ color: '#ccc' }}>{project.description}</p>
+                <p style={{ color: '#ccc', fontSize: '0.9rem' }}>{project.description}</p>
                 <StyledButton
                   bg='#ff0099'
                   color='#fff'
