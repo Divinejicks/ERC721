@@ -126,7 +126,7 @@ export default function Home() {
           navigation={true}
           modules={[Pagination, Navigation]}
           className="mySwiper"
-          style={{ marginTop: '2rem', maxWidth: '600px', marginLeft: 'auto', marginRight: 'auto' }}
+          style={{ marginTop: '2rem', maxWidth: '300px', maxHeight: '600px', marginLeft: 'auto', marginRight: 'auto' }}
         >
           {projects.map((project, index) => (
             <SwiperSlide key={index}>
