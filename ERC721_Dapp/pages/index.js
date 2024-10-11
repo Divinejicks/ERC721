@@ -92,7 +92,7 @@ export default function Home() {
           <p>
             I am the Co-founder and CTO of{' '}
             <a
-              href="https://peace-keepers.com"
+              href="https://www.peace-keepers.io/"
               target="_blank"
               rel="noopener noreferrer"
               style={{ color: '#ff0099', textDecoration: 'underline' }}
