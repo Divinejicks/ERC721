@@ -6,10 +6,10 @@ import Footer from '../components/Footer/Footer.component';
 import Header from '../components/Header/header.component';
 import { StyledImage } from '../components/Header/Header.styled';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import { Pagination, Navigation } from 'swiper';
 
 export default function Home() {
   const projects = [
