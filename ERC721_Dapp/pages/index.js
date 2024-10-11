@@ -34,9 +34,10 @@ export default function Home() {
   ];
 
   const skills = [
-    'Blockchain Development (Solidity, Ethers.js)',
-    'Full-Stack Web Development (React, Node.js, Next.js)',
+    'Blockchain Development (Solidity, Ethers.js, viem)',
+    'Full-Stack Web Development (React, Node.js, Next.js, C# (ASP.Net), Angular)',
     'Smart Contract Development',
+    'Telegram mini-game developer',
     'Decentralized Applications (dApps)',
     'Mentoring and Training Developers',
     'Version Control (Git)',
@@ -48,11 +49,17 @@ export default function Home() {
     'Solidity',
     'JavaScript',
     'TypeScript',
+    'Node.js',
     'C#',
     'HTML/CSS',
     'SQL',
+    'MongoDB',
+    'MySQL',
     'Tailwind CSS',
     'Next.js',
+    'Viem',
+    'Radom',
+    'Moralis'
   ];
 
   return (
@@ -70,7 +77,7 @@ export default function Home() {
             <h2 style={{ color: '#ff0099' }}>If you like what you see, send me an email</h2>
             <p>
               You can send me an email by clicking on the button below or by copying my email address. 
-              <strong> mbuhdivinecho@gmail.com </strong>. I'll get back to you as soon as possible.
+              <strong> mbuhdivinecho@gmail.com </strong>. I will get back to you as soon as possible.
             </p>
             <StyledButton bg='#ff0099' color='#fff' onClick={() => window.location = 'mailto:mbuhdivinecho@gmail.com'}>
               Contact me
