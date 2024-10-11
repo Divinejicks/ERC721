@@ -15,19 +15,19 @@ export default function Home() {
   const projects = [
     {
       title: 'Peace Keepers',
-      description: 'Peace Keepers is an unbiased and decentralized system that promotes fair and appropriate resolutions no matter how complex the dispute is.',
+      description: 'An unbiased and decentralized system promoting fair resolutions for complex disputes.',
       imageUrl: '/assets/pkLogo.png',
       link: 'https://www.peace-keepers.io/',
     },
     {
       title: 'Enkaare',
-      description: 'Enkaare is a talent hiring company that focuses on helping businesses find the best talent wherever they may be located across the globe.',
+      description: 'A global talent hiring company connecting businesses with top talent across the globe.',
       imageUrl: '/assets/enkLogo.png',
       link: 'https://enkaare.com/',
     },
     {
       title: 'CodeInBlock',
-      description: 'CodeInBlock, is a Decentralized Autonomous Organization (DAO) that aims to equip young Africans with the right skills and knowledge to contribute to their community.',
+      description: 'A DAO equipping young Africans with skills to build blockchain-based solutions for local challenges.',
       imageUrl: '/assets/cibLogo.png',
       link: 'https://codeinblock.com/',
     },
@@ -53,9 +53,9 @@ export default function Home() {
   return (
     <>
       <Header />
-      <StyledContainer style={{ backgroundColor: '#121212', color: '#fff', minHeight: '100vh', padding: '2rem' }}>
+      <StyledContainer style={{ backgroundColor: '#f5f5f5', color: '#333', minHeight: '100vh', padding: '2rem' }}>
         <Head>
-          <title>My Dark Portfolio</title>
+          <title>My Portfolio</title>
           <meta name="description" content="Welcome to my portfolio website" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
@@ -63,28 +63,28 @@ export default function Home() {
         {/* Hero Section */}
         <Flex style={{ justifyContent: 'space-between', alignItems: 'center', marginBottom: '3rem' }}>
           <div style={{ maxWidth: '600px' }}>
-            <h2 style={{ color: '#ff0099', fontSize: '2rem', marginBottom: '1rem' }}>Get In Touch</h2>
-            <p style={{ lineHeight: '1.6' }}>
+            <h2 style={{ color: '#ff5722', fontSize: '2rem', marginBottom: '1rem' }}>Get In Touch</h2>
+            <p style={{ lineHeight: '1.6', color: '#555' }}>
               You can send me an email by clicking on the button below or by copying my email address. 
               <strong> mbuhdivinecho@gmail.com </strong>. I will get back to you as soon as possible.
             </p>
-            <StyledButton bg='#ff0099' color='#fff' onClick={() => window.location = 'mailto:mbuhdivinecho@gmail.com'}>
+            <StyledButton bg='#ff5722' color='#fff' onClick={() => window.location = 'mailto:mbuhdivinecho@gmail.com'}>
               Contact me
             </StyledButton>
           </div>
-          <StyledImage src="/assets/profilepic.jpeg" alt="Profile picture" style={{ borderRadius: '50%', maxWidth: '250px' }} />
+          <StyledImage src="/assets/profilepic.jpeg" alt="Profile picture" style={{ borderRadius: '50%', maxWidth: '200px' }} />
         </Flex>
 
         {/* About Me Section */}
         <section>
-          <h3 style={{ color: '#ff0099', marginBottom: '1rem', fontSize: '1.8rem' }}>About Me</h3>
-          <p style={{ lineHeight: '1.6' }}>
+          <h3 style={{ color: '#ff5722', marginBottom: '1rem', fontSize: '1.8rem' }}>About Me</h3>
+          <p style={{ lineHeight: '1.6', color: '#555' }}>
             I am the Co-founder and CTO of{' '}
             <a
               href="https://www.peace-keepers.io/"
               target="_blank"
               rel="noopener noreferrer"
-              style={{ color: '#ff0099', textDecoration: 'underline' }}
+              style={{ color: '#ff5722', textDecoration: 'underline' }}
             >
               Peace-Keepers
             </a>, a global organization with team members in the USA and Mexico. We focus on building impactful decentralized applications and fostering international collaboration in the blockchain space.
@@ -93,10 +93,10 @@ export default function Home() {
 
         {/* Skills Section */}
         <section style={{ marginTop: '3rem' }}>
-          <h3 style={{ color: '#ff0099', marginBottom: '1rem', fontSize: '1.8rem' }}>Skills & Expertise</h3>
-          <ul style={{ listStyleType: 'none', padding: 0, columns: 2, columnGap: '2rem' }}>
+          <h3 style={{ color: '#ff5722', marginBottom: '1rem', fontSize: '1.8rem' }}>Skills & Expertise</h3>
+          <ul style={{ listStyleType: 'none', padding: 0, columns: 2, columnGap: '2rem', color: '#555' }}>
             {skills.map((skill, index) => (
-              <li key={index} style={{ marginBottom: '0.5rem', color: '#fff' }}>
+              <li key={index} style={{ marginBottom: '0.5rem' }}>
                 - {skill}
               </li>
             ))}
@@ -105,10 +105,10 @@ export default function Home() {
 
         {/* Programming Languages Section */}
         <section style={{ marginTop: '3rem' }}>
-          <h3 style={{ color: '#ff0099', marginBottom: '1rem', fontSize: '1.8rem' }}>Programming Languages</h3>
-          <ul style={{ listStyleType: 'none', padding: 0, columns: 2, columnGap: '2rem' }}>
+          <h3 style={{ color: '#ff5722', marginBottom: '1rem', fontSize: '1.8rem' }}>Programming Languages</h3>
+          <ul style={{ listStyleType: 'none', padding: 0, columns: 2, columnGap: '2rem', color: '#555' }}>
             {languages.map((language, index) => (
-              <li key={index} style={{ marginBottom: '0.5rem', color: '#fff' }}>
+              <li key={index} style={{ marginBottom: '0.5rem' }}>
                 - {language}
               </li>
             ))}
@@ -116,26 +116,26 @@ export default function Home() {
         </section>
 
         {/* Project Carousel */}
-        <h3 style={{ textAlign: 'center', color: '#ff0099', marginTop: '4rem', fontSize: '2rem' }}>My Past Projects</h3>
+        <h3 style={{ textAlign: 'center', color: '#ff5722', marginTop: '4rem', fontSize: '2rem' }}>My Past Projects</h3>
         <Swiper
           slidesPerView={1}
-          spaceBetween={30}
+          spaceBetween={20}
           pagination={{
             clickable: true,
           }}
           navigation={true}
           modules={[Pagination, Navigation]}
           className="mySwiper"
-          style={{ marginTop: '2rem', maxWidth: '800px', marginLeft: 'auto', marginRight: 'auto' }}
+          style={{ marginTop: '2rem', maxWidth: '600px', marginLeft: 'auto', marginRight: 'auto' }}
         >
           {projects.map((project, index) => (
             <SwiperSlide key={index}>
-              <div style={{ textAlign: 'center', padding: '1rem', borderRadius: '10px', background: '#1c1c1c' }}>
+              <div style={{ textAlign: 'center', padding: '1rem', borderRadius: '10px', background: '#fff', boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }}>
                 <img src={project.imageUrl} alt={project.title} style={{ width: '100%', height: 'auto', borderRadius: '10px' }} />
-                <h4 style={{ color: '#fff', marginTop: '1rem' }}>{project.title}</h4>
-                <p style={{ color: '#ccc', fontSize: '0.9rem' }}>{project.description}</p>
+                <h4 style={{ color: '#333', marginTop: '1rem' }}>{project.title}</h4>
+                <p style={{ color: '#666', fontSize: '0.9rem' }}>{project.description}</p>
                 <StyledButton
-                  bg='#ff0099'
+                  bg='#ff5722'
                   color='#fff'
                   onClick={() => window.open(project.link, '_blank')}
                   style={{ marginTop: '1rem' }}
